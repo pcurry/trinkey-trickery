@@ -32,8 +32,9 @@ midi = adafruit_midi.MIDI(
 
 CC_NUM = 46  # pick your midi cc number here
 
-def map_range(in_val, in_min, in_max, out_min, out_max):
-    return out_min + ((in_val - in_min) * (out_max - out_min) / (in_max - in_min))
+def prox_map(out_min, out_max):
+    return out_min + ((out_max - out_min) * (apds.proximity / 255))
+
 
 pixels[0] = 0x000000
 pixels[1] = 0x0000FF
@@ -60,17 +61,17 @@ while True:
         mode = True
 
     if mode:
-        prox_cc = int(map_range(apds.proximity, 0, 255, 0, 127))
+        prox_cc = int(prox_map(0, 127))
         if last_prox_cc is not prox_cc:
             midi.send(ControlChange(CC_NUM, prox_cc ))
             print("CC is", prox_cc)
             last_prox_cc = prox_cc
     else:
-        prox_pitch = int(map_range(apds.proximity, 0, 255, 8192, 16383))
+        prox_pitch = int(prox_map(8192, 16383))
         if last_prox_pitch is not prox_pitch:
             midi.send(PitchBend(prox_pitch))
             print("Pitch bend is", prox_pitch)
             last_prox_pitch = prox_pitch
 
-    prox_bright = map_range(apds.proximity, 0, 255, 0.01, 1.0)
+    prox_bright = prox_map(0.01, 1.0)
     pixels.brightness = prox_bright
