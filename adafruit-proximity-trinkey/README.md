@@ -6,6 +6,13 @@ Messing around with the Adafruit Proximity Trinkey.
 All CircuitPython examples are on 9.0.0.alpha2 as of this writing.
 
 
+Where Do I Get One?
+-------------------
+
+[Adafruit Proximity Trinkey](https://www.adafruit.com/product/5022 "Adafruit product page")
+
+
+
 Dual-Load
 ---------
 
