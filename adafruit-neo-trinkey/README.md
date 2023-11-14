@@ -10,3 +10,9 @@ Where Do I Get One?
 -------------------
 
 [Adafruit Neo Trinkey](https://www.adafruit.com/product/4870 "Adafruit product page")
+
+
+How Do I Get Started?
+---------------------
+
+[Adafruit Learn Guide for Neo Trinkey](https://learn.adafruit.com/adafruit-neo-trinkey)
